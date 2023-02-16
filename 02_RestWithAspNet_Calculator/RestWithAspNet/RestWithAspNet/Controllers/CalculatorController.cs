@@ -30,6 +30,67 @@ namespace RestWithAspNet.Controllers
             return BadRequest("Invalid Input");
         }
 
+        [HttpGet("sub/{firstNumber}/{secondtNumber}")]
+        public IActionResult GetSub(string firstNumber, string secondtNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondtNumber))
+            {
+                var sub = ConvertToNumeric(firstNumber) - ConvertToNumeric(secondtNumber);
+
+                return Ok(sub.ToString());
+            }
+            return BadRequest("Invalid Input");
+        }
+
+        [HttpGet("mult/{firstNumber}/{secondtNumber}")]
+        public IActionResult GetMult(string firstNumber, string secondtNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondtNumber))
+            {
+                var mult = ConvertToNumeric(firstNumber) * ConvertToNumeric(secondtNumber);
+
+                return Ok(mult.ToString());
+            }
+            return BadRequest("Invalid Input");
+        }
+
+        [HttpGet("div/{firstNumber}/{secondtNumber}")]
+        public IActionResult GetDiv(string firstNumber, string secondtNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondtNumber))
+            {
+                var div = ConvertToNumeric(firstNumber) / ConvertToNumeric(secondtNumber);
+
+                return Ok(div.ToString());
+            }
+            return BadRequest("Invalid Input");
+        }
+
+        [HttpGet("mean/{firstNumber}/{secondtNumber}")]
+        public IActionResult GetMean(string firstNumber, string secondtNumber)
+        {
+            if (IsNumeric(firstNumber) && IsNumeric(secondtNumber))
+            {
+                var mean = (ConvertToNumeric(firstNumber) + ConvertToNumeric(secondtNumber)) / 2;
+
+                return Ok(mean.ToString());
+            }
+            return BadRequest("Invalid Input");
+        }
+
+        [HttpGet("sqrt/{firstNumber}")]
+        public IActionResult GetSqrt(string firstNumber)
+        {
+            if (IsNumeric(firstNumber))
+            {
+                var mean = Math.Sqrt((double)(ConvertToNumeric(firstNumber)));
+
+                return Ok(mean.ToString());
+            }
+            return BadRequest("Invalid Input");
+        }
+
+
         private bool IsNumeric(string strNumber)
         {
             double number;
